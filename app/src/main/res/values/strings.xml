@@ -2,4 +2,8 @@
     <string name="app_name">Offline</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="dialog_message">Hi Eric!</string>
+    <string name="dialog_title">DIALOGUEZZZZ</string>
+    <string name="ok">Hi!</string>
+    <string name="cancel">GTFO</string>
 </resources>

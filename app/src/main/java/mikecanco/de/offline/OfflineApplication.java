@@ -1,7 +1,14 @@
 package mikecanco.de.offline;
 
-/**
- * Created by koalahamlet on 5/6/15.
- */
-public class OfflineApplication {
+import android.app.Application;
+
+public class OfflineApplication extends Application {
+	@Override
+	public void onCreate() {
+		super.onCreate();
+
+		// Some Stuff
+
+
+	}
 }
