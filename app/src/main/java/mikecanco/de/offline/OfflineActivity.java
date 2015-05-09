@@ -28,6 +28,8 @@ public class OfflineActivity extends ActionBarActivity {
 
 		//TODO: this chunk of code is how we would send
 
+		Globals.setOfflineQueryAlarm();
+
 //	public static void setUploadLogsAlarm() {
 //
 //
