@@ -55,6 +55,12 @@ public class OfflineActivity extends ActionBarActivity {
 //		return super.onOptionsItemSelected(item);
 //	}
 
+	@Override
+	protected void onResume() {
+		super.onResume();
+		Globals.setOffline(false);
+	}
+
 	@OnClick(R.id.button)
 	public void clickButton(View view){
 
