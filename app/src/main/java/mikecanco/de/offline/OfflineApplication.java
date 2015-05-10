@@ -10,6 +10,8 @@ public class OfflineApplication extends Application {
 	public void onCreate() {
 		super.onCreate();
 		sInstance = this;
+
+		Globals.setOfflineQueryAlarm();
 	}
 
 	public static OfflineApplication getInstance() {

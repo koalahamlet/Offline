@@ -26,9 +26,6 @@ public class OfflineActivity extends ActionBarActivity {
 		//TODO: Some layer of twitter login needs to go here
 		
 
-		//TODO: this chunk of code is how we would set an alarm
-
-		Globals.setOfflineQueryAlarm();
 
 	}
 
