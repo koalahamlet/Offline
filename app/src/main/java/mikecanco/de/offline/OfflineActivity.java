@@ -5,6 +5,9 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.squareup.otto.Subscribe;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -23,6 +26,8 @@ public class OfflineActivity extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_offline);
 		ButterKnife.inject(this);
+
+
 
 		//TODO: Some layer of twitter login needs to go here
 
@@ -55,8 +60,15 @@ public class OfflineActivity extends ActionBarActivity {
 	@Override
 	protected void onResume() {
 		super.onResume();
+		OfflineApplication.setUserInApp(true);
 		OfflineApplication.getBus().register(this);
 		Globals.setOffline(false);
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		OfflineApplication.setUserInApp(false);
 	}
 
 	@OnClick(R.id.button)
@@ -88,6 +100,12 @@ public class OfflineActivity extends ActionBarActivity {
 //
 //		dialog.show();
 
+	}
+
+	@Subscribe
+	public void answerAvailable(AlarmOfflineEvent event) {
+		// TODO: React to the event somehow!
+		Toast.makeText(this, "Youre in the app, totes online", Toast.LENGTH_LONG).show();
 	}
 
 }
