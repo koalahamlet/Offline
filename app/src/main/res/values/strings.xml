@@ -6,4 +6,8 @@
     <string name="dialog_title">DIALOGUEZZZZ</string>
     <string name="ok">Hi!</string>
     <string name="cancel">GTFO</string>
+    <string name="text_offline">OMG!?!?! Iz U Offline?!</string>
+    <string name="text_online">GTFO</string>
+    <string name="button_offline">Nah, I'm plugged into the matrix</string>
+    <string name="button_online">Nah, I'm plugged into the matrix</string>
 </resources>

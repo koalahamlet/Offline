@@ -56,12 +56,16 @@ public class OfflineQueryReceiver extends BroadcastReceiver {
 						.setSmallIcon(R.drawable.abc_btn_check_material)
 						.setContentTitle("#Offline")
 						.setContentText("Are you Offline?")
-						.setContentIntent(pIntent).build();
+						.setContentIntent(pIntent)
+
+						.setAutoCancel(true)
+						.build();
 
 // Hide the notification after its selected
 //		noti.setAuto(true);
 
 // mId allows you to update the notification later on.
+		mNotificationManager.cancelAll();
 		mNotificationManager.notify(0, noti);
 
 		// TODO: This method is called when the BroadcastReceiver is receiving

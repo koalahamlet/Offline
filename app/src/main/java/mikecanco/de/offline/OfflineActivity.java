@@ -1,11 +1,10 @@
 package mikecanco.de.offline;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -16,6 +15,8 @@ public class OfflineActivity extends ActionBarActivity {
 	@InjectView(R.id.button)
 	Button mybutton;
 
+	@InjectView(R.id.text)
+	TextView textView;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +25,6 @@ public class OfflineActivity extends ActionBarActivity {
 		ButterKnife.inject(this);
 
 		//TODO: Some layer of twitter login needs to go here
-		
 
 
 	}
@@ -55,36 +55,38 @@ public class OfflineActivity extends ActionBarActivity {
 	@Override
 	protected void onResume() {
 		super.onResume();
+		OfflineApplication.getBus().register(this);
 		Globals.setOffline(false);
 	}
 
 	@OnClick(R.id.button)
 	public void clickButton(View view){
 
-		AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
-
-		// 2. Chain together various setter methods to set the dialog characteristics
-		builder.setMessage(R.string.dialog_message)
-				.setTitle(R.string.dialog_title);
-
-		builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialog, int id) {
-				// User clicked OK button
-			}
-		});
-
-		builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialog, int id) {
-				// User cancelled the dialog
-			}
-		});
-
-		// 3. Get the AlertDialog from create()
-		AlertDialog dialog = builder.create();
 
 
-
-		dialog.show();
+//
+//		AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+//
+//		// 2. Chain together various setter methods to set the dialog characteristics
+//		builder.setMessage(R.string.dialog_message)
+//				.setTitle(R.string.dialog_title);
+//
+//		builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+//			public void onClick(DialogInterface dialog, int id) {
+//				// User clicked OK button
+//			}
+//		});
+//
+//		builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+//			public void onClick(DialogInterface dialog, int id) {
+//				// User cancelled the dialog
+//			}
+//		});
+//
+//		// 3. Get the AlertDialog from create()
+//		AlertDialog dialog = builder.create();
+//
+//		dialog.show();
 
 	}
 
