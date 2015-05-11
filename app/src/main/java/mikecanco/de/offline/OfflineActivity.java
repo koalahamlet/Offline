@@ -27,42 +27,32 @@ public class OfflineActivity extends ActionBarActivity {
 		setContentView(R.layout.activity_offline);
 		ButterKnife.inject(this);
 
-
-
 		//TODO: Some layer of twitter login needs to go here
 
 
 	}
-
-	//no menus needed here.
-//	@Override
-//	public boolean onCreateOptionsMenu(Menu menu) {
-//		// Inflate the menu; this adds items to the action bar if it is present.
-//		getMenuInflater().inflate(R.menu.menu_offline, menu);
-//		return true;
-//	}
-//
-//	@Override
-//	public boolean onOptionsItemSelected(MenuItem item) {
-//		// Handle action bar item clicks here. The action bar will
-//		// automatically handle clicks on the Home/Up button, so long
-//		// as you specify a parent activity in AndroidManifest.xml.
-//		int id = item.getItemId();
-//
-//		//noinspection SimplifiableIfStatement
-//		if (id == R.id.action_settings) {
-//			return true;
-//		}
-//
-//		return super.onOptionsItemSelected(item);
-//	}
 
 	@Override
 	protected void onResume() {
 		super.onResume();
 		OfflineApplication.setUserInApp(true);
 		OfflineApplication.getBus().register(this);
-		Globals.setOffline(false);
+		if (Globals.isOffline()){
+			offlineUI();
+		}else {
+			Globals.setOffline(false);
+			onlineUI();
+		}
+	}
+
+	public void onlineUI(){
+		textView.setText(getResources().getString(R.string.text_online));
+		mybutton.setText(getResources().getString(R.string.button_online));
+	}
+
+	public void offlineUI(){
+		textView.setText(getResources().getString(R.string.text_offline));
+		mybutton.setText(getResources().getString(R.string.button_offline));
 	}
 
 	@Override
@@ -74,7 +64,10 @@ public class OfflineActivity extends ActionBarActivity {
 	@OnClick(R.id.button)
 	public void clickButton(View view){
 
-
+	if (Globals.isOffline()){
+		Globals.setOffline(false);
+		onlineUI();
+	}
 
 //
 //		AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
@@ -105,6 +98,7 @@ public class OfflineActivity extends ActionBarActivity {
 	@Subscribe
 	public void answerAvailable(AlarmOfflineEvent event) {
 		// TODO: React to the event somehow!
+
 		Toast.makeText(this, "Youre in the app, totes online", Toast.LENGTH_LONG).show();
 	}
 
